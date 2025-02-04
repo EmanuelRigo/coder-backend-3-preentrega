@@ -1,9 +1,10 @@
 import { Router } from "express";
-import mocksController from "../controllers/mocks.controller";
+import { getMockingPets, getMockingUsers, getMockingUsersByNumber } from "../controllers/mocks.controller.js";
 
 const router = Router();
 
-router.get('/mockingusers', mocksController.getUsers);
-router.get('/mockingpets', mocksController.getPets);
 
-export default router
+router.get('/mockingpets/:num', getMockingPets);
+router.get('/mockingusers/:num', getMockingUsersByNumber);
+
+export default router;
