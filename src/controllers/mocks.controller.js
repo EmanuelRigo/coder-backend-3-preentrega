@@ -1,4 +1,4 @@
-import MockingService from "../services/mocking"
+import MockingService from "../services/mocking.js";
 
 const getMockingPets = async (req, res) => {
     const num = parseInt(req.params.num, 10);
@@ -12,7 +12,4 @@ const getMockingUsers = async (req, res) => {
     res.send({status: "success", payload: users});
 }
 
-export default {
-    getMockingPets,
-    getMockingUsers
-}
+export { getMockingPets, getMockingUsers };

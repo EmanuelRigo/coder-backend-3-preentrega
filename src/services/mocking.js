@@ -3,9 +3,9 @@ import { createHash } from "../utils/index.js";
 
 class MockingService {
   static async generateMockingUsers(num) {
-    const usuarios = [];
+    const users = [];
     for (let i = 0; i < num; i++) {
-      usuarios.push({
+      users.push({
         first_name: faker.person.firstName(),
         last_name: faker.person.lastName(),
         email: faker.internet.email(),
@@ -14,13 +14,13 @@ class MockingService {
         pets: [],
       });
     }
-    return usuarios;
+    return users;
   }
 
   static async generateMockingPets(num) {
-    const mascotas = [];
+    const pets = [];
     for (let i = 0; i < num; i++) {
-      mascotas.push({
+      pets.push({
         name: faker.animal.petName(),
         specie: faker.animal.cat(),
         adopted: false,
@@ -28,7 +28,7 @@ class MockingService {
         image: "https://via.placeholder.com/150",
       });
     }
-    return mascotas;
+    return pets;
   }
 }
 
