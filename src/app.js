@@ -7,10 +7,20 @@ import petsRouter from "./routes/pets.router.js";
 import adoptionsRouter from "./routes/adoption.router.js";
 import sessionsRouter from "./routes/sessions.router.js";
 import mocksRouter from "./routes/mocks.router.js";
+import dotenv from "dotenv";
+
+dotenv.config(); 
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-const connection = mongoose.connect(`mongodb://127.0.0.1:27017/pet-adoption`);
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/pet-adoption';
+
+mongoose.connect(MONGO_URI).then(() => {
+    console.log('Connected to MongoDB');
+}).catch((err) => {
+    console.error('Error connecting to MongoDB:', err.message);
+});
+
 
 app.use(express.json());
 app.use(cookieParser());
