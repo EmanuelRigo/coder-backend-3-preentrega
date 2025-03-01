@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adoptme
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: adoptme
+  template:
+    metadata:
+      labels:
+        app: adoptme
+    spec:
+      containers:
+      - name: adoptme
+        image: emanuelrigo91/entregafinalcoder:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGO_URI
+          value: "mongodb+srv://emaMovies:movies1472@cluster-movielist-api.p9kfo.mongodb.net/Coder-adoption"
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adoptme
+spec:
+  selector:
+    app: adoptme
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
