@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 8080;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/pet-adoption';
 
 mongoose.connect(MONGO_URI).then(() => {
+    console.log(MONGO_URI)
     console.log('Connected to MongoDB');
 }).catch((err) => {
     console.error('Error connecting to MongoDB:', err.message);
